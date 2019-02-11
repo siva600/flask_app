@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+    <div class="container">
+      <h2>User Posts</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Date Posted</th>
+            <th>Content</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+        {% for item in posts %}
+          <tr>
+            <td><a href= "{{ url_for('home') }}" style="cursor:pointer">{{ item.date_posted }}</a></td>
+
+            <td>{{ item.content }}</td>
+              {% endfor %}
+          </tr>
+
+        {% for page_num in user_posts.iter_pages() %}
+            {% if page_num %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('dashboard', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+{##}
+{#    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=3, right_current=4) %}#}
+{#        {% if page_num %}#}
+{#            {% if posts.page == page_num %}#}
+{#                <a class="btn btn-info mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>#}
+{#            {% else %}#}
+{#                <a class="btn btn-outline-info mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>#}
+{#            {% endif %}#}
+{#        {% else %}#}
+{#            ...#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <title>Bootstrap Example</title>#}
+{#  <meta charset="utf-8">#}
+{#  <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+{#  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+{#  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+{#</head>#}
+{#<body>#}
+{##}
+{##}
+{#<div class="container">#}
+{#  <h2>User Posts</h2>#}
+{#  <table class="table table-bordered">#}
+{#    <thead>#}
+{#      <tr>#}
+{#        <th>Date Posted</th>#}
+{#        <th>Content</th>#}
+{#      </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{#<td style="cursor:pointer" onclick="location.href='mylink.html'">link</td>#}
+{##}
+{#    {% for item in posts %}#}
+{#      <tr>#}
+{#        <td><a href= "{{ url_for('home') }}" style="cursor:pointer">{{ item.date_posted }}</a></td>#}
+{##}
+{#        <td>{{ item.content }}</td>#}
+{#          {% endfor %}#}
+{#      </tr>#}
+{##}
+{##}
+{##}
+{#    {% for page_num in user_posts.iter_pages() %}#}
+{#        {% if page_num %}#}
+{#            <a class="btn btn-outline-info mb-4" href="{{ url_for('dashboard', page=page_num) }}">{{ page_num }}</a>#}
+{#        {% else %}#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+{##}
+{#    </tbody>#}
+{#  </table>#}
+{#</div>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{##}
