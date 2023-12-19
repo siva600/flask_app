@@ -15,14 +15,12 @@ class RegistrationForm(FlaskForm):
 
     # custom validation if username already exists
     def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user:
+        if user := User.query.filter_by(username=username.data).first():
             raise ValidationError('Username Already Taken')
 
     # custom validation if email already exists
     def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user:
+        if user := User.query.filter_by(email=email.data).first():
             raise ValidationError('Email already Taken')
 
 
